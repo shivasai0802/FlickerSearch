@@ -12,7 +12,7 @@ struct FlickerSearchBarView: View {
     @ObservedObject private var viewModel = FlickerListViewModel()
     @State var searchText: String
     
-    let columns = [ GridItem(.adaptive(minimum: 80)) ]
+    let columns = [ GridItem(.adaptive(minimum: 100)) ]
     
     var body: some View {
         VStack {
@@ -27,7 +27,6 @@ struct FlickerSearchBarView: View {
                                             image // Displays the loaded image.
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
-                                                .clipShape(Rectangle())
                                         } else if phase.error != nil { // Indicates an error.
                                             Color.red
                                                 .clipShape(Rectangle())
@@ -36,16 +35,16 @@ struct FlickerSearchBarView: View {
                                                 .clipShape(Rectangle())
                                         }
                                     }
-                                    .frame(width: 50, height: 50, alignment: .leading)
+                                    .frame(alignment: .leading)
                                 }
                             }
                         }
                         .padding(.horizontal)
                     }
                     .navigationTitle("Flicker Data")
-                    .searchable(text: $searchText, placement: .automatic)
+                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Type your keywords")
                     .onChange(of: searchText) { value in
-                        if !searchText.isEmpty && searchText.count >= 3 {
+                        if !searchText.isEmpty && searchText.count >= 1 {
                             viewModel.fetchFlickerData(searchText: searchText)
                         }
                     }
@@ -54,7 +53,7 @@ struct FlickerSearchBarView: View {
             }
         }
         .onAppear() {
-            viewModel.fetchFlickerData(searchText: "")
+            viewModel.fetchFlickerData(searchText: "eagle")
         }
     }
 }

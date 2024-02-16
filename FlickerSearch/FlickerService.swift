@@ -12,7 +12,7 @@ class FlickerService {
     let flickerDataURL = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags="
     
     func fetchFlickerData(searchText: String, completion: @escaping (Result<FlickerData, Error>) -> Void) {
-        let input = searchText.isEmpty ? "porcupine":searchText.replacingOccurrences(of: " ", with: "")
+        let input = searchText.replacingOccurrences(of: " ", with: "")
         
         let url = URL(string: flickerDataURL+input)
 

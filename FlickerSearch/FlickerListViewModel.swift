@@ -14,9 +14,9 @@ class FlickerListViewModel: ObservableObject {
 
     @Published var flickerData: FlickerData?
 
-    func fetchFlickerData(searchText: String?) {
+    func fetchFlickerData(searchText: String) {
         
-        flickerService.fetchFlickerData(searchText: searchText ?? "") { result in
+        flickerService.fetchFlickerData(searchText: searchText) { result in
             switch result {
             case .success(let fetchedFlickerData):
                 DispatchQueue.main.async {
