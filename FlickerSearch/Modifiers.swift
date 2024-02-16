@@ -13,8 +13,9 @@ struct CustomTitle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(Color.black)
+            .lineLimit(2)
             .font(.custom("Open Sans", size: 18))
-            .frame(height: 28)
+            .padding(.leading)
     }
 }
 
@@ -23,8 +24,8 @@ struct BodyStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(Color.black)
+            .lineLimit(5)
             .font(.custom("Open Sans", size: 16))
-            .frame(height: 28)
     }
 }
 

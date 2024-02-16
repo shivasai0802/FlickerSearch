@@ -28,14 +28,14 @@ struct ItemDescriptionView: View {
                 }
                 .frame(height: 200)
                 
-                VStack {
-                    HStack(alignment: .center) {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(alignment: .top) {
                         Text("Title :: ").customTitle()
                         if let title = item?.title {
                             Text(title).customBody()
                         }
                     }
-                    HStack(alignment: .center) {
+                    HStack(alignment: .top) {
                         Text("Description :: ").customTitle()
                            
                         if let desc = item?.description {
@@ -43,15 +43,16 @@ struct ItemDescriptionView: View {
                         }
                     }
                     
-                    HStack(alignment: .center) {
+                    
+                    HStack(alignment: .top) {
                         Text("Author :: ").customTitle()
                         if let title = item?.author {
                             Text(title).customBody()
                         }
                     }
                     
-                    HStack(alignment: .center) {
-                        Text("Published Date :: ").customTitle()
+                    HStack(alignment: .top) {
+                        Text("Published date :: ").customTitle()
                         if let published = item?.published,
                             let publishedDate = getFormattedDate(input: published) {
                             Text(publishedDate).customBody()
