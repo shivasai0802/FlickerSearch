@@ -26,7 +26,7 @@ struct ItemDescriptionView: View {
                             .clipShape(Rectangle())
                     }
                 }
-                .frame(height: 200)
+                .frame(alignment: .leading)
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .top) {
